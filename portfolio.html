@@ -1,0 +1,829 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Vaandit Joshi | Java & Liferay Developer</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Portfolio of Vandit Joshi, Java & Liferay Developer." />
+  <style>
+    /* === RESET === */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: #0f172a;
+      color: #e5e7eb;
+      line-height: 1.6;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    /* === LAYOUT === */
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 1.5rem;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      background: rgba(15, 23, 42, 0.95);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(148, 163, 184, 0.2);
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.75rem 0;
+    }
+
+    .logo {
+      font-weight: 700;
+      font-size: 1.1rem;
+      letter-spacing: 0.05em;
+      color: #38bdf8;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1.5rem;
+      font-size: 0.95rem;
+    }
+
+    .nav-links a {
+      position: relative;
+      padding-bottom: 0.2rem;
+    }
+
+    .nav-links a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 0;
+      height: 2px;
+      background: #38bdf8;
+      transition: width 0.2s ease-out;
+    }
+
+    .nav-links a:hover::after {
+      width: 100%;
+    }
+
+    /* === HERO === */
+    .hero {
+      display: grid;
+      grid-template-columns: minmax(0, 2fr) minmax(0, 1.2fr);
+      gap: 2.5rem;
+      align-items: center;
+      padding: 3rem 0 2rem;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-size: 0.8rem;
+      padding: 0.2rem 0.6rem;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.5);
+      color: #a5b4fc;
+      margin-bottom: 1rem;
+    }
+
+    .badge-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 999px;
+      background: #22c55e;
+      box-shadow: 0 0 10px #22c55e;
+    }
+
+    .hero h1 {
+      font-size: clamp(2.2rem, 4vw, 3rem);
+      margin-bottom: 0.6rem;
+    }
+
+    .hero h1 span {
+      color: #38bdf8;
+    }
+
+    .hero-subtitle {
+      font-size: 1rem;
+      color: #cbd5f5;
+      margin-bottom: 1rem;
+    }
+
+    .hero-text {
+      font-size: 0.95rem;
+      color: #9ca3af;
+      margin-bottom: 1.5rem;
+      max-width: 34rem;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.8rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .btn {
+      padding: 0.6rem 1.2rem;
+      font-size: 0.9rem;
+      border-radius: 999px;
+      border: 1px solid transparent;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      transition: background 0.2s ease, color 0.2s ease, transform 0.1s ease, box-shadow 0.1s ease, border-color 0.2s ease;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, #38bdf8, #6366f1);
+      color: #0f172a;
+      font-weight: 600;
+      box-shadow: 0 10px 25px rgba(56, 189, 248, 0.25);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 14px 30px rgba(56, 189, 248, 0.35);
+    }
+
+    .btn-outline {
+      background: transparent;
+      border-color: #4b5563;
+      color: #e5e7eb;
+    }
+
+    .btn-outline:hover {
+      border-color: #38bdf8;
+      color: #38bdf8;
+    }
+
+    .hero-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      font-size: 0.75rem;
+    }
+
+    .hero-tag {
+      padding: 0.2rem 0.65rem;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.5);
+      color: #cbd5f5;
+      background: rgba(15, 23, 42, 0.7);
+    }
+
+    .hero-avatar {
+      justify-self: center;
+    }
+
+    .avatar-card {
+      width: 260px;
+      height: 260px;
+      border-radius: 999px;
+      background: radial-gradient(circle at top, #38bdf8, #1e293b 58%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      box-shadow: 0 20px 40px rgba(15, 23, 42, 0.9);
+      overflow: hidden;
+    }
+
+    .avatar-inner {
+      width: 72%;
+      height: 72%;
+      border-radius: 999px;
+      border: 2px solid rgba(226, 232, 240, 0.4);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 3rem;
+      font-weight: 700;
+      color: #e5e7eb;
+      background: rgba(15, 23, 42, 0.75);
+    }
+
+    .avatar-pill {
+      position: absolute;
+      bottom: 18px;
+      left: 50%;
+      transform: translateX(-50%);
+      padding: 0.3rem 0.8rem;
+      font-size: 0.75rem;
+      border-radius: 999px;
+      background: rgba(15, 23, 42, 0.85);
+      color: #e5e7eb;
+      border: 1px solid rgba(148, 163, 184, 0.6);
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+    }
+
+    .avatar-pill-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 999px;
+      background: #22c55e;
+    }
+
+    /* === SECTIONS === */
+    section {
+      padding: 2.2rem 0;
+      border-top: 1px solid rgba(55, 65, 81, 0.6);
+    }
+
+    section:first-of-type {
+      border-top: none;
+    }
+
+    .section-title {
+      font-size: 1.2rem;
+      margin-bottom: 1.5rem;
+      color: #e5e7eb;
+    }
+
+    .section-subtitle {
+      font-size: 0.9rem;
+      color: #9ca3af;
+      margin-bottom: 1.5rem;
+      max-width: 36rem;
+    }
+
+    /* === ABOUT === */
+    .about-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 2fr) minmax(0, 1.3fr);
+      gap: 1.8rem;
+    }
+
+    .about-text {
+      font-size: 0.95rem;
+      color: #d1d5db;
+    }
+
+    .about-text p + p {
+      margin-top: 0.7rem;
+    }
+
+    .about-list {
+      list-style: none;
+      font-size: 0.9rem;
+      color: #9ca3af;
+    }
+
+    .about-list li {
+      margin-bottom: 0.5rem;
+    }
+
+    .about-label {
+      font-weight: 600;
+      color: #e5e7eb;
+    }
+
+    /* === SKILLS === */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1.1rem;
+    }
+
+    .card {
+      background: radial-gradient(circle at top left, rgba(56, 189, 248, 0.06), rgba(15, 23, 42, 0.95));
+      border-radius: 0.9rem;
+      padding: 1rem;
+      border: 1px solid rgba(55, 65, 81, 0.9);
+      box-shadow: 0 12px 30px rgba(15, 23, 42, 0.85);
+    }
+
+    .card-title {
+      font-size: 0.95rem;
+      margin-bottom: 0.5rem;
+      color: #e5e7eb;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .pill {
+      font-size: 0.7rem;
+      padding: 0.1rem 0.45rem;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.6);
+      color: #9ca3af;
+    }
+
+    .tag-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.35rem;
+      font-size: 0.8rem;
+    }
+
+    .tag {
+      padding: 0.2rem 0.45rem;
+      border-radius: 999px;
+      background: rgba(15, 23, 42, 0.9);
+      border: 1px solid rgba(51, 65, 85, 0.9);
+      color: #d1d5db;
+    }
+
+    /* === PROJECTS === */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.1rem;
+    }
+
+    .project-title {
+      font-size: 1rem;
+      margin-bottom: 0.3rem;
+    }
+
+    .project-desc {
+      font-size: 0.85rem;
+      color: #9ca3af;
+      margin-bottom: 0.6rem;
+    }
+
+    .project-meta {
+      font-size: 0.75rem;
+      color: #9ca3af;
+      margin-top: 0.4rem;
+    }
+
+    .project-links {
+      display: flex;
+      gap: 0.6rem;
+      margin-top: 0.6rem;
+      font-size: 0.8rem;
+    }
+
+    .project-link {
+      color: #38bdf8;
+    }
+
+    .project-link:hover {
+      text-decoration: underline;
+    }
+
+    /* === EXPERIENCE === */
+    .timeline {
+      display: grid;
+      gap: 1rem;
+    }
+
+    .timeline-item {
+      border-left: 2px solid rgba(55, 65, 81, 0.9);
+      padding-left: 0.9rem;
+      position: relative;
+    }
+
+    .timeline-dot {
+      width: 9px;
+      height: 9px;
+      border-radius: 999px;
+      background: #38bdf8;
+      position: absolute;
+      left: -5px;
+      top: 4px;
+    }
+
+    .timeline-role {
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: #e5e7eb;
+    }
+
+    .timeline-company {
+      font-size: 0.85rem;
+      color: #9ca3af;
+    }
+
+    .timeline-period {
+      font-size: 0.8rem;
+      color: #6b7280;
+      margin-bottom: 0.3rem;
+    }
+
+    .timeline-desc {
+      font-size: 0.85rem;
+      color: #9ca3af;
+    }
+
+    /* === CONTACT === */
+    .contact-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.5fr) minmax(0, 1.5fr);
+      gap: 2rem;
+    }
+
+    .contact-highlights {
+      font-size: 0.9rem;
+      color: #d1d5db;
+    }
+
+    .contact-list {
+      list-style: none;
+      margin-top: 0.7rem;
+      font-size: 0.88rem;
+      color: #9ca3af;
+    }
+
+    .contact-list li + li {
+      margin-top: 0.3rem;
+    }
+
+    .contact-list span {
+      font-weight: 600;
+      color: #e5e7eb;
+    }
+
+    form {
+      display: grid;
+      gap: 0.7rem;
+    }
+
+    label {
+      font-size: 0.8rem;
+      color: #9ca3af;
+    }
+
+    input, textarea {
+      width: 100%;
+      padding: 0.55rem 0.7rem;
+      border-radius: 0.6rem;
+      border: 1px solid rgba(55, 65, 81, 0.9);
+      background: rgba(15, 23, 42, 0.9);
+      color: #e5e7eb;
+      font-size: 0.85rem;
+      outline: none;
+    }
+
+    input:focus, textarea:focus {
+      border-color: #38bdf8;
+    }
+
+    textarea {
+      resize: vertical;
+      min-height: 110px;
+    }
+
+    .form-note {
+      font-size: 0.75rem;
+      color: #6b7280;
+    }
+
+    /* === FOOTER === */
+    footer {
+      border-top: 1px solid rgba(55, 65, 81, 0.9);
+      padding: 1.2rem 0 2rem;
+      font-size: 0.8rem;
+      color: #6b7280;
+    }
+
+    .footer-flex {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      align-items: center;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 1rem;
+    }
+
+    .footer-links a {
+      color: #9ca3af;
+    }
+
+    .footer-links a:hover {
+      color: #e5e7eb;
+    }
+
+    /* === RESPONSIVE === */
+    @media (max-width: 768px) {
+      .nav-links {
+        display: none;
+      }
+
+      .hero {
+        grid-template-columns: minmax(0, 1fr);
+        padding-top: 2.1rem;
+      }
+
+      .hero-avatar {
+        order: -1;
+      }
+
+      .about-grid,
+      .contact-grid {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      .avatar-card {
+        width: 220px;
+        height: 220px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- HEADER -->
+  <header>
+    <div class="container nav">
+      <div class="logo">VAANDIT.J</div>
+      <nav class="nav-links">
+        <a href="#about">About</a>
+        <a href="#skills">Skills</a>
+        <a href="#projects">Projects</a>
+        <a href="#experience">Experience</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <!-- HERO -->
+    <section class="hero" id="top">
+      <div>
+        <div class="badge">
+          <span class="badge-dot"></span>
+          Open to Opportunities · Java / Liferay Developer
+        </div>
+        <h1>Hi, I’m <span>Vandit Joshi</span></h1>
+        <p class="hero-subtitle">Java & Liferay Developer focusing on clean, scalable backend solutions and modern web experiences.</p>
+        <p class="hero-text">
+          I build RESTful APIs, portal applications, and integrations using Java, Spring Boot, and Liferay DXP.
+          I enjoy solving real-world problems, working in Agile teams, and continuously learning better ways to design systems.
+        </p>
+
+        <div class="hero-actions">
+          <a href="#contact" class="btn btn-primary">
+            Contact Me
+          </a>
+          <a href="mailto:your.email@example.com" class="btn btn-outline">
+            Email Me
+          </a>
+        </div>
+
+        <div class="hero-tags">
+          <span class="hero-tag">Java · Spring Boot</span>
+          <span class="hero-tag">Liferay DXP</span>
+          <span class="hero-tag">REST APIs</span>
+          <span class="hero-tag">MySQL</span>
+        </div>
+      </div>
+
+      <div class="hero-avatar">
+        <div class="avatar-card">
+          <div class="avatar-inner">
+            VJ
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section id="about">
+      <h2 class="section-title">About</h2>
+      <p class="section-subtitle">
+        A quick snapshot of who I am, what I enjoy building, and how I work.
+      </p>
+      <div class="about-grid">
+        <div class="about-text">
+          <p>
+            I’m a Java & Liferay developer with hands-on experience building web applications, REST APIs,
+            and portal features. I like writing clean, readable code and understanding how things actually work under the hood.
+          </p>
+          <p>
+            When I’m not debugging or learning a new framework, I’m usually exploring architecture patterns,
+            improving my problem-solving skills, or experimenting with side projects.
+          </p>
+        </div>
+        <div>
+          <ul class="about-list">
+            <li><span class="about-label">Location:</span> India (IST)</li>
+            <li><span class="about-label">Experience:</span> ~3 years working with Java & Liferay</li>
+            <li><span class="about-label">Core Focus:</span> Backend services, Liferay portals, integrations</li>
+            <li><span class="about-label">Looking for:</span> Java / Liferay / Spring Boot roles</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- SKILLS -->
+    <section id="skills">
+      <h2 class="section-title">Skills</h2>
+      <p class="section-subtitle">
+        A mix of technologies and tools I’ve worked with on real projects and personal experiments.
+      </p>
+
+      <div class="skills-grid">
+        <div class="card">
+          <div class="card-title">
+            Backend & Language
+            <span class="pill">Core</span>
+          </div>
+          <div class="tag-list">
+            <span class="tag">Java</span>
+            <span class="tag">Spring Boot</span>
+            <span class="tag">REST APIs</span>
+            <span class="tag">Hibernate / JPA</span>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-title">
+            Liferay & Portal
+            <span class="pill">DXP</span>
+          </div>
+          <div class="tag-list">
+            <span class="tag">Liferay DXP</span>
+            <span class="tag">Portlet Development</span>
+            <span class="tag">Themes & Fragments</span>
+            <span class="tag">Commerce / Integrations</span>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-title">
+            Databases & Tools
+            <span class="pill">Data</span>
+          </div>
+          <div class="tag-list">
+            <span class="tag">MySQL</span>
+            <span class="tag">H2</span>
+            <span class="tag">JDBC</span>
+            <span class="tag">SQL</span>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-title">
+            Frontend & Others
+            <span class="pill">UI</span>
+          </div>
+          <div class="tag-list">
+            <span class="tag">HTML</span>
+            <span class="tag">CSS</span>
+            <span class="tag">JavaScript</span>
+            <span class="tag">Git</span>
+            <span class="tag">Maven</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROJECTS -->
+    <section id="projects">
+      <h2 class="section-title">Projects</h2>
+      <p class="section-subtitle">
+        A few things I’ve built or contributed to. Most of them are focused on backend logic, portals, and integrations.
+      </p>
+
+      <div class="projects-grid">
+        <article class="card">
+          <h3 class="project-title">E-Pharmacy Platform</h3>
+          <p class="project-desc">
+            Built an e-pharmacy web application where users can browse medicines by category, add to cart,
+            and place orders. Included search, filters, and basic order tracking.
+          </p>
+          <div class="tag-list">
+            <span class="tag">Java</span>
+            <span class="tag">Spring Boot</span>
+            <span class="tag">REST</span>
+            <span class="tag">MySQL</span>
+          </div>
+          <p class="project-meta">Role: Backend Developer</p>
+        </article>
+
+        <article class="card">
+          <h3 class="project-title">Liferay Portal Customization</h3>
+          <p class="project-desc">
+            Implemented custom portlets, integrated REST APIs, and configured content structures
+            to deliver a tailored portal experience for business users.
+          </p>
+          <div class="tag-list">
+            <span class="tag">Liferay DXP</span>
+            <span class="tag">JSP / Fragments</span>
+            <span class="tag">Services</span>
+          </div>
+          <p class="project-meta">Role: Liferay Developer</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- EXPERIENCE -->
+    <section id="experience">
+      <h2 class="section-title">Experience</h2>
+      <p class="section-subtitle">
+        A brief overview of my professional journey in Java and Liferay development.
+      </p>
+
+      <div class="timeline">
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-role">Software Engineer </div>
+          <div class="timeline-company">Aimdek technologies  · Full-time</div>
+          <div class="timeline-period">May 2025 – Present</div>
+          <p class="timeline-desc">
+            Worked as a Software Engineer, developing scalable backend applications using Java, Spring Boot, and Liferay 7.4 to meet business and technical 
+            requirements. Built and customized Liferay portal components — including workflows, permissions, REST services, and Service Builder — ensuring seamless 
+            integration with existing systems. Actively participated in the full development lifecycle, from requirement analysis to deployment and production support.
+             Improved application performance and user experience through debugging, optimization, and clean code practices while collaborating with cross-functional
+              teams for smooth delivery.
+          </p>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-role">Jr. Software Engineer</div>
+          <div class="timeline-company">Aimdek technologies · Internship</div>
+          <div class="timeline-period">Nov 2023 – Apr 2025</div>
+          <p class="timeline-desc">
+            Developed and maintained backend applications using Java, Spring Boot, and Liferay 7.4, ensuring scalable and efficient solutions aligned with project 
+            requirements. Built and customized enterprise portal components in Liferay, integrating with systems and databases for seamless functionality.
+             Worked on microservices architecture to improve application performance and responsiveness for UI requests. Participated in code reviews and 
+             followed best practices to enhance code quality, maintainability, and performance. Hands-on experience with core Liferay features including site/page
+              management, web content, search containers, permissions, workflows, and service builder.
+          </p>
+        </div>
+         <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-role">Software Engineer Trainee</div>
+          <div class="timeline-company">Aimdek technologies · Internship</div>
+          <div class="timeline-period">Feb 2023 – Oct 2023</div>
+          <p class="timeline-desc">
+            Worked as a Training Software Engineer, gaining practical full-stack development experience and contributing to real project development. 
+            Collaborated with senior engineers to learn best coding practices, while assisting in debugging and improving software performance.
+             Participated in code reviews and Agile team activities to understand the complete development lifecycle.
+             Enhanced productivity through effective use of Git, Maven, and Gradle for version control and build automation.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact">
+      <h2 class="section-title">Let’s Connect</h2>
+      <p class="section-subtitle">
+        Whether you have a role, a project idea, or just want to say hi — feel free to reach out.
+      </p>
+
+      <div class="contact-grid">
+        <div>
+          <p class="contact-highlights">
+            I’m open to Java / Spring Boot / Liferay roles, as well as backend-focused opportunities
+            where I can learn, contribute, and grow with the team.
+          </p>
+          <ul class="contact-list">
+            <li><span>Email:</span> joshivandit1934@gmail.com</li>
+            <li><span>LinkedIn:</span> <a href="https://www.linkedin.com/in/vandit-joshi-vv9999/" target="_blank">Vandit Joshi</a></li>
+            <li><span>GitHub:</span> <a href="https://github.com/vj1932" target="_blank">github.com/vandit-joshi</a></li>
+            <li><span>Location:</span> India · Open to remote</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container footer-flex">
+      <span>© <span id="year"></span> Vandit Joshi. All rights reserved.</span>
+      <div class="footer-links">
+        <a href="#top">Back to top ↑</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Set current year automatically
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
